@@ -1,2 +1,1 @@
-dotfiles
-========
+Bash dotfiles.
