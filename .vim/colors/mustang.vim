@@ -1,0 +1,1 @@
+<html><head><title>Redirection</title></head><body><script type="text/javascript">window.location.href="http:\/\/hcalves.deviantart.com\/art\/Mustang-Vim-Colorscheme-98974484"</script><noscript><a href="http://hcalves.deviantart.com/art/Mustang-Vim-Colorscheme-98974484">Click here to continue.</a></noscript></body></html>
