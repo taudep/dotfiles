@@ -16,9 +16,10 @@
 (require 'whitespace)
 (require 'dired-x)
 (require 'compile)
+(require 'package)
 (ido-mode t)
 (menu-bar-mode -1)
-(normal-erase-is-backspace-mode 1)
+(normal-erase-is-backspace-mode 0)
 (put 'downcase-region 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (setq column-number-mode t)
@@ -27,6 +28,7 @@
 (setq show-trailing-whitespace t)
 (setq suggest-key-bindings t)
 (setq vc-follow-symlinks t)
+(setq backup-directory-alist `(("." . "~/.emacs-backup")))
 
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -75,3 +77,9 @@
 (require 'jade-mode)    
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
+
+;; -----------------------
+;; -- PACKAGE Libraries --
+;; -----------------------
+(add-to-list 'package-archives
+             '("marmalade" . "http://marmalade-repo.org/packages/") t)
