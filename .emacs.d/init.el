@@ -5,6 +5,7 @@
 ;; -- Global Settings --
 ;; ---------------------
 (add-to-list 'load-path "~/.emacs.d")
+(require 'package)
 (require 'cl)
 (require 'ido)
 (require 'ffap)
@@ -16,7 +17,6 @@
 (require 'whitespace)
 (require 'dired-x)
 (require 'compile)
-(require 'package)
 (ido-mode t)
 (menu-bar-mode -1)
 (normal-erase-is-backspace-mode 0)
@@ -45,6 +45,7 @@
  '(isearch ((((class color) (min-colors 8)) (:background "yellow" :foreground "black"))))
  '(linum ((t (:foreground "black" :weight bold))))
  '(region ((((class color) (min-colors 8)) (:background "white" :foreground "magenta"))))
+
  '(secondary-selection ((((class color) (min-colors 8)) (:background "gray" :foreground "cyan"))))
  '(show-paren-match ((((class color) (background light)) (:background "black"))))
  '(vertical-border ((t nil)))
@@ -78,8 +79,39 @@
 (add-to-list 'auto-mode-alist '("\\.styl$" . sws-mode))
 (add-to-list 'auto-mode-alist '("\\.jade$" . jade-mode))
 
+;; ORG Mode Configuration
+(require 'org)
+
+;; Ya Snippet
+(add-to-list 'load-path
+              "~/.emacs.d/plugins/yasnippet")
+(require 'yasnippet)
+(yas-global-mode 1)
+
 ;; -----------------------
 ;; -- PACKAGE Libraries --
 ;; -----------------------
 (add-to-list 'package-archives
              '("marmalade" . "http://marmalade-repo.org/packages/") t)
+
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/") t)
+
+;; Load the Monokai Theme
+;;(require 'monokai) 
+;; (load-theme 'monokai t)
+
+;;(when (eq system-type 'darwin) ;; mac specific 
+;;  (setq mac-option-modifier 'alt)
+;;  (setq mac-option-modifier 'meta)
+;;  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete 
+
+(autoload 'markdown-mode "markdown-mode" "Major mode for editing Markdown files" t)
+(add-to-list 'auto-mode-alist '("\\.text\\'" . markdown-mode))
+(add-to-list 'auto-mode-alist '("\\.markdown\\'" . gfm-mode))
+(add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+(require 'org-docbook)
+;;
+(setq org-export-docbook-xsl-fo-proc-command "/usr/local/bin/fop \"%i\" \"%o\"")
+(setq org-export-docbook-xslt-proc-command "/usr/local/bin/saxon -o:\"%o\" -s:\"%i\" -xsl:\"%s\"")
+(setq org-export-docbook-xslt-stylesheet "/usr/local/Cellar/docbook/5.0/docbook/xsl-ns/1.77.1/fo/docbook.xsl")
